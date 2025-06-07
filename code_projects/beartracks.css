@@ -1,0 +1,202 @@
+/* BearTracks Project Page Styles */
+
+.project-detail-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 20px 60px;
+}
+
+.project-header {
+    text-align: center;
+    margin-bottom: 100px;
+    position: relative;
+}
+
+.project-header::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 1px;
+    background-color: rgba(51, 51, 51, 0.5);
+}
+
+.project-header h1 {
+    font-family: 'Stevie Sans', sans-serif;
+    font-size: 3rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+}
+
+.project-subtitle {
+    font-family: 'Stevie Sans', sans-serif;
+    font-size: 1.2rem;
+    color: #666;
+    font-weight: 300;
+}
+
+.project-sidebar-image {
+    margin-bottom: 30px;
+}
+
+.project-sidebar-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 0 auto;
+}
+
+.project-info-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+.project-description h2, .project-description h3 {
+    font-family: 'Stevie Sans', sans-serif;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.project-description h2 {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.project-description h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-top: 30px;
+}
+
+.project-description p, .project-description li {
+    font-family: 'Stevie Sans', sans-serif;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.project-description ul {
+    padding-left: 20px;
+}
+
+.project-description strong {
+    font-family: 'Stevie Sans', sans-serif;
+    font-weight: 530;
+    color: #333;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.tech-tag {
+    background: #0d64a7;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: 'Stevie Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.project-links-section h3 {
+    font-family: 'Stevie Sans', sans-serif;
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.project-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.project-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: 'Stevie Sans', sans-serif;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    justify-content: center;
+}
+
+.project-btn.primary {
+    background: #333;
+    color: white;
+}
+
+.project-btn.primary:hover {
+    background: #555;
+    transform: translateY(-2px);
+}
+
+.project-btn.secondary {
+    background: transparent;
+    color: #333;
+    border: 2px solid #333;
+}
+
+.project-btn.secondary:hover {
+    background: #333;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.navigation-section {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid rgba(51, 51, 51, 0.5);
+}
+
+.back-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #f5f5f5;
+    color: #333;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: 'Stevie Sans', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .project-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .project-info-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .project-buttons {
+        flex-direction: column;
+    }
+
+    .tech-stack {
+        justify-content: center;
+    }
+} 

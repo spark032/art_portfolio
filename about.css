@@ -1,0 +1,52 @@
+#about {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 0 5px 0;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    flex-grow: 1;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text p {
+    text-align: left;
+    font-family: 'Stevie Sans', sans-serif;
+    font-size: 1.4em;
+}
+
+.about-image {
+    flex-shrink: 0;
+}
+
+.profile-image {
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .profile-image {
+        width: 250px;
+        height: auto;
+    }
+} 

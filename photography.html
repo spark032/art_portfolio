@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography</title>
+    <link rel="stylesheet" href="https://use.typekit.net/krl4ixy.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="photography.css">
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="index.html">Sue An Park</a></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="categories.html" class="dropdown-toggle active">Categories</a>
+                <ul class="dropdown-menu">
+                    <li><a href="2d.html">2D Art</a></li>
+                    <li><a href="3d.html">3D Art</a></li>
+                    <li><a href="digital.html">Digital Art</a></li>
+                    <li><a href="coding.html">Coding</a></li>
+                    <li><a href="photography.html" class="active">Photography</a></li>
+                </ul>
+            </li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+    
+    <div class="scroll-container">
+        <!-- CITIES HORIZONTAL SCROLL SECTION -->
+        <section class="horizontal-scroll-section">
+            <div class="places-header">
+                <h1>Lost in <span id="city-name">___</span></h1>
+            </div>
+            <div class="scroll-container">
+                <div class="scroll-content">
+                    <div class="scroll-item">
+                        <a href="cities/hawaii.html">
+                            <div class="image-container">
+                                <img src="images/website/locations-16.png" alt="Location 16" />
+                            </div>
+                            <h2>hawaii</h2>
+                        </a>
+                    </div>
+                    <div class="scroll-item">
+                        <a href="cities/seoul.html">
+                            <div class="image-container">
+                                <img src="images/website/locations-15.png" alt="Location 15" />
+                            </div>
+                            <h2>seoul</h2>
+                        </a>
+                    </div>
+                    <div class="scroll-item">
+                        <a href="cities/quebec-city.html">
+                            <div class="image-container">
+                                <img src="images/website/locations-14.png" alt="Location 14" />
+                            </div>
+                            <h2>québec city</h2>
+                        </a>
+                    </div>
+                    <div class="scroll-item">
+                        <a href="cities/boston.html">
+                            <div class="image-container">
+                                <img src="images/website/locations-10.png" alt="Location 10" />
+                            </div>
+                            <h2>boston</h2>
+                        </a>
+                    </div>
+                    <div class="scroll-item">
+                        <a href="cities/san-francisco.html">
+                            <div class="image-container">
+                                <img src="images/website/locations-11.png" alt="Location 11" />
+                            </div>
+                            <h2>san francisco</h2>
+                        </a>
+                    </div>
+                    <div class="scroll-item">
+                        <a href="cities/los-angeles.html">
+                            <div class="image-container">
+                                <img src="images/website/locations-09.png" alt="Location 9" />
+                            </div>
+                            <h2>los angeles</h2>
+                        </a>
+                    </div>
+                    <div class="scroll-item">
+                        <a href="cities/providence.html">
+                            <div class="image-container">
+                                <img src="images/website/locations-13.png" alt="Location 13" />
+                            </div>
+                            <h2>providence</h2>
+                        </a>
+                    </div>
+                    <div class="scroll-item">
+                        <a href="cities/seattle.html">
+                            <div class="image-container">
+                                <img src="images/website/locations-08.png" alt="Location 8" />
+                            </div>
+                            <h2>seattle</h2>
+                        </a>
+                    </div>
+                    <div class="scroll-item">
+                        <a href="cities/montreal.html">
+                            <div class="image-container">
+                                <img src="images/website/locations-12.png" alt="Location 12" />
+                            </div>
+                            <h2>montréal</h2>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHOTOGRAPHY CATEGORIES SECTION -->
+        <section class="scroll-section" id="photography-categories">
+            <div class="portfolio-content">
+                <div class="portfolio-center">
+                    <div class="portfolio-categories">
+                        <div class="category">
+                            <a href="animal.html">
+                                <img src="images/website/animal.png" alt="Animal Photography" />
+                            </a>
+                            <h2>animals</h2>
+                        </div>
+                        <div class="category">
+                            <a href="people.html">
+                                <img src="images/website/people.png" alt="People Photography" />
+                            </a>
+                            <h2>people</h2>
+                        </div>
+                        <div class="category">
+                            <a href="nature.html">
+                                <img src="images/website/nature.png" alt="Nature Photography" />
+                            </a>
+                            <h2>nature</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-button">
+                    <a href="all-photos.html">
+                        <button>Explore More</button>
+                    </a>
+                </div>
+                <!-- FOOTER -->
+                <footer class="copyright-footer" style="position: absolute; bottom: 5px; left: 0; right: 0; margin-top: 0;">
+                    <p>© 2025 Sue An Park. All rights reserved.</p>
+                </footer>
+            </div>
+        </section>
+    </div>
+
+    <!-- JavaScript that handles infinite scroll and pause -->
+    <script src="script.js"></script>
+
+    <script>
+        // City names mapping
+        const cityNames = [
+            'hawaii',
+            'seoul',
+            'québec city',
+            'boston',
+            'san francisco',
+            'los angeles',
+            'providence',
+            'seattle',
+            'montréal'
+        ];
+
+        const cityNameSpan = document.getElementById('city-name');
+        const scrollContent = document.querySelector('.horizontal-scroll-section .scroll-content');
+        const scrollItems = document.querySelectorAll('.scroll-item');
+
+        let currentCity = '';
+        let typewriterTimeout;
+
+        function typewriter(text, callback) {
+            // Clear any existing timeout
+            if (typewriterTimeout) {
+                clearTimeout(typewriterTimeout);
+            }
+
+            cityNameSpan.textContent = '';
+            let index = 0;
+
+            function type() {
+                if (index < text.length) {
+                    cityNameSpan.textContent += text.charAt(index);
+                    index++;
+                    typewriterTimeout = setTimeout(type, 100); // Adjust speed here (100ms per character)
+                } else if (callback) {
+                    callback();
+                }
+            }
+
+            type();
+        }
+
+        function updateCityName() {
+            const scrollContainer = document.querySelector('.horizontal-scroll-section .scroll-container');
+            const containerRect = scrollContainer.getBoundingClientRect();
+            const containerCenter = containerRect.left + containerRect.width / 2;
+
+            let closestItem = null;
+            let closestDistance = Infinity;
+
+            scrollItems.forEach((item, index) => {
+                const itemRect = item.getBoundingClientRect();
+                const itemCenter = itemRect.left + itemRect.width / 2;
+                const distance = Math.abs(containerCenter - itemCenter);
+
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestItem = index;
+                }
+            });
+
+            if (closestItem !== null && cityNames[closestItem]) {
+                const newCity = cityNames[closestItem];
+                if (newCity !== currentCity) {
+                    currentCity = newCity;
+                    typewriter(newCity);
+                }
+            }
+        }
+
+        // Update on scroll
+        const scrollContainer = document.querySelector('.horizontal-scroll-section .scroll-container');
+        if (scrollContainer) {
+            scrollContainer.addEventListener('scroll', updateCityName);
+        }
+
+        // Update on page load
+        window.addEventListener('load', () => {
+            setTimeout(updateCityName, 100);
+        });
+
+        // Update on resize
+        window.addEventListener('resize', updateCityName);
+    </script>
+
+
+</body>
+</html> 

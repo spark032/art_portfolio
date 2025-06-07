@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color as Medium</title>
+    <link rel="stylesheet" href="https://use.typekit.net/krl4ixy.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="with_sidebar.css">
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="../index.html">Sue An Park</a></div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="../categories.html" class="dropdown-toggle active">Categories</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../2d.html">2D Art</a></li>
+                    <li><a href="../3d.html">3D Art</a></li>
+                    <li><a href="../digital.html">Digital Art</a></li>
+                    <li><a href="../coding.html">Coding</a></li>
+                    <li><a href="../photography.html">Photography</a></li>
+                </ul>
+            </li>
+            <li><a href="../about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="artwork-page">
+        <div class="artwork-container">
+            <div class="artwork-image-section">
+                <div class="carousel-container">
+                    <button class="carousel-nav carousel-prev" onclick="changeCarouselImage(-1)">&#8249;</button>
+                    <div class="image-carousel">
+                        <div class="carousel-images">
+                            <img src="../images/digital/ps1.png" alt="Color as Medium - PlayStation Design" class="carousel-image active">
+                            <img src="../images/digital/cmyk.jpg" alt="CMYK Study" class="carousel-image">
+                            <img src="../images/digital/rgb.png" alt="RGB Study" class="carousel-image">
+                        </div>
+                    </div>
+                    <button class="carousel-nav carousel-next" onclick="changeCarouselImage(1)">&#8250;</button>
+                </div>
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="currentCarouselImage(1)"></span>
+                    <span class="dot" onclick="currentCarouselImage(2)"></span>
+                    <span class="dot" onclick="currentCarouselImage(3)"></span>
+                </div>
+            </div>
+            <div class="artwork-info">
+                <h1>Color as Medium</h1>
+                <p>Adobe Photoshop, 2024</p>
+                <p class="artwork-description">
+                    *Image 2: CMYK, Image 3: RGB <br> 
+                    This project features merged images of colorful fish designed to capture attention through vibrant colors rather than form, 
+                    with the RGB version utilizing soft pastels and transparent backgrounds while the CMYK version emphasizes bold contrast with 
+                    vivid colors against a stark black background. The blurred, layered effect explores how different color systems—RGB's refined 
+                    subtlety versus CMYK's graphic intensity—can dramatically alter the visual impact and mood of the same subject matter.
+                </p>
+                <button class="back-button" onclick="window.location.href='../digital.html'">← Back to Digital Art</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.carousel-image');
+        const dots = document.querySelectorAll('.dot');
+
+        function showCarouselImage(index) {
+            // Hide all images
+            images.forEach(img => img.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            // Show current image
+            images[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function changeCarouselImage(direction) {
+            currentImageIndex += direction;
+
+            if (currentImageIndex >= images.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = images.length - 1;
+            }
+
+            showCarouselImage(currentImageIndex);
+        }
+
+        function currentCarouselImage(index) {
+            currentImageIndex = index - 1;
+            showCarouselImage(currentImageIndex);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                changeCarouselImage(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeCarouselImage(1);
+            }
+        });
+    </script>
+    <!-- FOOTER -->
+    <footer class="copyright-footer">
+        <p>© 2025 Sue An Park. All rights reserved.</p>
+    </footer>
+
+</body>
+</html> 

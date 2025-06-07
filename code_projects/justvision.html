@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Vision - Sue An Park</title>
+    <link rel="stylesheet" href="https://use.typekit.net/krl4ixy.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="justvision.css">
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="../index.html">Sue An Park</a></div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="../categories.html" class="dropdown-toggle">Categories</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../2d.html">2D Art</a></li>
+                    <li><a href="../3d.html">3D Art</a></li>
+                    <li><a href="../digital.html">Digital Art</a></li>
+                    <li><a href="../coding.html" class="active">Coding</a></li>
+                    <li><a href="../photography.html">Photography</a></li>
+                </ul>
+            </li>
+            <li><a href="../about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="project-detail-page">
+        <div class="project-header">
+            <h1>Just Vision</h1>
+            <p class="project-subtitle">CSCI 1430 Computer Vision Final Project - Just Dance Recreation</p>
+        </div>
+
+        <div class="project-content">
+            <div class="project-info-section">
+                <div class="project-description">
+                    <h2>About This Project</h2>
+                    <p>Just Vision is a computer vision recreation of the popular video game Just Dance, developed as a final project for CSCI 1430 Computer Vision at Brown University. Using live depth camera input and machine learning techniques, the system captures and analyzes dance movements in real-time to provide interactive gameplay feedback. This project was created by Kamya Raman, Max Smith-Stern, Stephanie Lin, Sue An Park.</p>
+                    
+                    <h3>Project Description</h3>
+                    <p>Our goal was to create an accessible dance game that encourages healthy movement and cognitive activity. The system uses a Microsoft Kinect depth camera to capture user movements and provides real-time visual feedback through an on-screen display. Players can dance along to the YMCA song while the system analyzes their poses and calculates accuracy scores, creating an engaging and entertaining experience for users of all skill levels.</p>
+                    
+                    <h3>Technical Approach</h3>
+                    <p>The project employs a sophisticated three-step computer vision pipeline:</p>
+                    <ul>
+                        <li><strong>Person Isolation:</strong> Uses depth thresholding and connected component analysis to separate the dancer from the background</li>
+                        <li><strong>Joint Classification:</strong> Implements Random Forest classifiers trained on the SURREAL synthetic dataset to predict body part segmentation maps and estimate 24 joint positions using separate regressors for upper and lower body parts</li>
+                        <li><strong>Pose Recognition:</strong> Applies Random Forest classifiers to the extracted joint vectors to identify and score specific dance poses in real-time</li>
+                    </ul>
+                    <p>The system processes live depth images, converts them into joint location vectors, and classifies poses with synchronized music playback for an immersive gaming experience.</p>
+
+                    <h3>Broader Applications</h3>
+                    <p>The techniques developed for mapping 3D depth data to 2D joint locations extend far beyond entertainment applications. This computer vision approach has significant potential in:</p>
+                    <ul>
+                        <li><strong>Autonomous Vehicle Safety:</strong> Predicting pedestrian movement patterns and routes for improved collision avoidance</li>
+                        <li><strong>Healthcare & Rehabilitation:</strong> Identifying improper movements for injury prevention and monitoring physical therapy progress</li>
+                        <li><strong>Sports Analytics:</strong> Analyzing athletic performance and technique improvement</li>
+                        <li><strong>Accessibility Technology:</strong> Creating gesture-based interfaces for individuals with mobility limitations</li>
+                    </ul>
+                    <p>This project represents the foundation of a broader, more widely integrated technique for human pose recognition and movement analysis in real-world applications.</p>
+
+                    <h3>Tech Stack</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">Random Forest</span>
+                        <span class="tech-tag">Kinect Camera</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">Machine Learning</span>
+                    </div>
+                </div>
+
+                <div class="project-links-section">
+                    <div class="project-sidebar-image">
+                        <img src="../images/website/justvision.png" alt="Just Vision Project">
+                    </div>
+                    <h3>Project Links</h3>
+                    <div class="project-buttons">
+                        <a href="https://github.com/msmithstern/just_vision" class="project-btn primary" target="_blank">
+                            <span>📁</span> GitHub Repository
+                        </a>
+                        <a href="JustVision_Final_Report.pdf" class="project-btn secondary" target="_blank">
+                            <span>📄</span> Project Report
+                        </a>
+                        <a href="../images/website/justvision_poster.png" class="project-btn tertiary" target="_blank">
+                            <span>🖼️</span> Project Poster
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation-section">
+            <a href="../coding.html" class="back-btn">← Back to Coding Projects</a>
+        </div>
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="copyright-footer">
+        <p>© 2025 Sue An Park. All rights reserved.</p>
+    </footer>
+
+</body>
+</html> 

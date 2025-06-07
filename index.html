@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Art Portfolio</title>
+  <link rel="stylesheet" href="https://use.typekit.net/krl4ixy.css">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="scroll-container">
+    <!-- HOME SECTION -->
+    <section class="scroll-section" id="home">
+      <div class="overlay"></div>
+      <nav>
+        <div class="logo"><a href="index.html">Sue An Park</a></div>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li class="dropdown">
+            <a href="categories.html" class="dropdown-toggle">Categories</a>
+            <ul class="dropdown-menu">
+              <li><a href="2d.html">2D Art</a></li>
+              <li><a href="3d.html">3D Art</a></li>
+              <li><a href="digital.html">Digital Art</a></li>
+              <li><a href="coding.html">Coding</a></li>
+              <li><a href="photography.html">Photography</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <main></main>
+    </section>
+
+    <!-- CODING SECTION -->
+    <section class="scroll-section" id="coding">
+      <div class="portfolio-content">
+        <div class="portfolio-center">
+          <div class="portfolio-categories-two">
+            <div class="category">
+              <a href="coding.html">
+                <img src="images/website/code_profile.png" alt="Coding">
+              </a>
+              <h2>coding</h2>
+            </div>
+            <div class="category">
+              <a href="#art-categories">
+                <img src="images/website/artwork.jpg" alt="Artwork">
+              </a>
+              <h2>artwork</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ART CATEGORIES SECTION -->
+    <section class="scroll-section" id="art-categories">
+      <div class="portfolio-content">
+        <div class="portfolio-center">
+          <div class="portfolio-categories">
+            <div class="category">
+              <a href="2d.html">
+                <img src="images/2d/hand.JPG" alt="2D Art">
+              </a>
+              <h2>2D</h2>
+            </div>
+            <div class="category">
+              <a href="3d.html">
+                <img src="images/3d/3d_main.png" alt="3D Art">
+              </a>
+              <h2>3D</h2>
+            </div>
+            <div class="category">
+              <a href="digital.html">
+                <img src="images/digital/rgb.png" alt="Digital Art">
+              </a>
+              <h2>digital</h2>
+            </div>
+            <div class="category">
+              <a href="photography.html">
+                <img src="images/photography/la_animal_camera_026.jpg" alt="Digital Art">
+              </a>
+              <h2>photography</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="scroll-section" id="contact">
+      <div class="contact-content">
+        <div class="center-image">
+          <img src="images/website/last-page.png" alt="Last Page" class="last-page-image" />
+        </div>
+        <!-- FOOTER -->
+        <footer class="copyright-footer">
+          <p>© 2025 Sue An Park. All rights reserved.</p>
+        </footer>
+      </div>
+    </section>
+  </div>
+
+  <!-- JavaScript that handles infinite scroll and pause -->
+  <script src="script.js"></script>
+</body>
+</html>

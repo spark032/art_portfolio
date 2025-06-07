@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Photos</title>
+    <link rel="stylesheet" href="https://use.typekit.net/krl4ixy.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="photography.html">Photography</a></div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+        </ul>
+    </nav>
+    <div class="gallery-page">
+        <h1>All Photos</h1>
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="camera">Camera</button>
+            <button class="filter-btn" data-filter="phone">Phone</button>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-section">
+                <h2>Animals</h2>
+                <div class="photo-grid">
+                    <div class="photo-item" data-type="camera">
+                        <!-- Add your animal photos with data-type -->
+                        <img src="images/animal-1.jpg" alt="Animal Photo">
+                    </div>
+                    <div class="photo-item" data-type="phone">
+                        <img src="images/animal-2.jpg" alt="Animal Photo">
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-section">
+                <h2>People</h2>
+                <div class="photo-grid">
+                    <div class="photo-item" data-type="camera">
+                        <img src="images/people-1.jpg" alt="People Photo">
+                    </div>
+                    <div class="photo-item" data-type="phone">
+                        <img src="images/people-2.jpg" alt="People Photo">
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-section">
+                <h2>Nature</h2>
+                <div class="photo-grid">
+                    <div class="photo-item" data-type="camera">
+                        <img src="images/nature-1.jpg" alt="Nature Photo">
+                    </div>
+                    <div class="photo-item" data-type="phone">
+                        <img src="images/nature-2.jpg" alt="Nature Photo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const photoItems = document.querySelectorAll('.photo-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    photoItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-type') === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    <!-- FOOTER -->
+    <footer class="copyright-footer">
+        <p>© 2025 Sue An Park. All rights reserved.</p>
+    </footer>
+
+</body>
+</html> 

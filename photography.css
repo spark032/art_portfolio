@@ -1,0 +1,35 @@
+/* Photography Page Styles */
+
+.horizontal-scroll-section {
+    flex-direction: column;
+    padding-top: 80px;
+}
+
+.places-header {
+    margin-bottom: 140px;
+}
+
+.places-header h1 {
+    font-family: 'Stevie Sans', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    letter-spacing: 0.05em;
+}
+
+#city-name {
+    text-decoration: underline;
+    text-underline-offset: 8px;
+}
+
+@media (max-width: 768px) {
+    .horizontal-scroll-section {
+        padding-top: 60px;
+    }
+    
+    .places-header h1 {
+        font-size: 2rem;
+    }
+} 
