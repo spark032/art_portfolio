@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Models Collection</title>
+    <link rel="stylesheet" href="https://use.typekit.net/krl4ixy.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Stevie+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="wo_sidebar.css">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+        .model-container {
+            width: 800px;
+            height: 500px;
+            max-width: 90vw;
+            margin: 10px auto;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .model-container.large {
+            width: 80vw;
+            max-width: 800px;
+            height: 500px !important;
+            min-height: 500px !important;
+        }
+        
+        .model-container.small {
+            width: 250px;
+            height: 250px;
+            margin: 10px;
+        }
+        
+        .models-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 80px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .model-container.large {
+                width: 90vw;
+                max-width: none;
+                height: 350px !important;
+                min-height: 350px !important;
+            }
+            
+            .models-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .model-container.small {
+                width: 220px;
+                height: 220px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .model-container.large {
+                width: 95vw;
+                height: 300px !important;
+                min-height: 300px !important;
+            }
+            
+            .model-container.small {
+                width: 200px;
+                height: 200px;
+            }
+        }
+        
+        model-viewer {
+            width: 100%;
+            height: 100%;
+            display: block;
+            --poster-color: #f5f5f5;
+        }
+        
+        /* Ensure parent container has proper sizing */
+        .artwork-image-section {
+            width: 100%;
+            height: auto; 
+            padding: 40px 20px 80px 20px;
+            box-sizing: border-box;
+        }
+        
+
+        
+        .model-description {
+            max-width: 800px;
+            margin: 5px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .model-description h2 {
+            font-family: 'Stevie Sans', sans-serif;
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .model-description h3 {
+            font-family: 'Stevie Sans', sans-serif;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #444;
+            text-align: center;
+        }
+        
+        .model-description p {
+            font-family: 'Stevie Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .controls-info {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 15px 20px;
+            border-radius: 15px;
+            margin: 20px auto;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .controls-info h3 {
+            font-family: 'Stevie Sans', sans-serif;
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #2c3e50;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .controls-info ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .controls-info li {
+            font-family: 'Stevie Sans', sans-serif;
+            font-size: 13px;
+            color: #495057;
+            padding: 12px 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            text-align: center;
+            min-height: 50px;
+        }
+        
+        .controls-info li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .controls-info li .emoji {
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 900px) {
+            .controls-info ul {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .controls-info ul {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls-info {
+                padding: 20px;
+                margin: 20px auto;
+            }
+        }
+    </style>
+    <script>
+        // Wait for DOM and model-viewer to be ready
+        window.addEventListener('DOMContentLoaded', function() {
+            const modelViewer = document.querySelector('model-viewer');
+            
+            // Add event listeners for model loading
+            modelViewer.addEventListener('load', () => {
+                console.log('✅ Model loaded successfully!');
+            });
+            
+            modelViewer.addEventListener('error', (event) => {
+                console.error('❌ Model failed to load:', event.detail);
+            });
+            
+            modelViewer.addEventListener('model-visibility', (event) => {
+                console.log('👁️ Model visibility changed:', event.detail.visible);
+            });
+            
+            // Wait a bit for layout to complete
+            setTimeout(() => {
+                const container = document.querySelector('.model-container');
+                console.log('Container dimensions:', container.offsetWidth, 'x', container.offsetHeight);
+                console.log('Model viewer dimensions:', modelViewer.offsetWidth, 'x', modelViewer.offsetHeight);
+                console.log('Model source:', modelViewer.src);
+                
+                // Force a resize event to make sure WebGL context is properly sized
+                if (modelViewer.offsetWidth > 0 && modelViewer.offsetHeight > 0) {
+                    window.dispatchEvent(new Event('resize'));
+                }
+            }, 100);
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="../index.html">Sue An Park</a></div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="../categories.html" class="dropdown-toggle active">Categories</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../2d.html">2D Art</a></li>
+                    <li><a href="../3d.html">3D Art</a></li>
+                    <li><a href="../digital.html">Digital Art</a></li>
+                    <li><a href="../coding.html">Coding</a></li>
+                    <li><a href="../photography.html">Photography</a></li>
+                </ul>
+            </li>
+            <li><a href="../about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="artwork-page">
+        <div class="artwork-image-section">
+            <div class="model-description">
+                <h2>3D Mountain Scene</h2>
+                <p>First Blender project - a low-poly mountain model created collaboratively with two fellow members 
+                    from Brown Animation Club. Learned the basics of 3D modeling through hands-on experimentation and teamwork.
+                </p>
+                <div class="model-description">
+                    <div class="controls-info">
+                        <h3>How to Interact with the Models</h3>
+                        <ul>
+                            <li><span class="emoji">🖱️</span> Click and drag to rotate</li>
+                            <li><span class="emoji">🔍</span> Scroll to zoom in/out</li>
+                            <li><span class="emoji">👆</span> Touch and drag on mobile</li>
+                            <li><span class="emoji">⚡</span> Auto-rotation pauses on interaction</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+            <!-- Featured Mountain Scene - Large and Centered -->
+            <div class="model-description">
+                <h3>Mountain Scene</h3>
+            </div>
+            <div class="model-container large">
+                <model-viewer 
+                    src="../images/digital/mountain_scene.glb" 
+                    alt="3D Mountain Scene"
+                    auto-rotate
+                    camera-controls
+                    touch-action="pan-y"
+                    shadow-intensity="1"
+                    environment-image="neutral"
+                    exposure="1"
+                    auto-rotate-delay="1500"
+                    rotation-per-second="10deg"
+                    loading="eager"
+                    reveal="auto"
+                    camera-orbit="0deg 75deg 50m"
+                    field-of-view="60deg"
+                    min-camera-orbit="auto auto 5m"
+                    max-camera-orbit="auto auto 100m">
+                </model-viewer>
+            </div>
+            
+            <!-- Three Models in a Row -->
+            <div class="models-row">
+                <div>
+                    <div class="model-description">
+                        <h3>Bear Model</h3>
+                    </div>
+                    <div class="model-container small">
+                        <model-viewer 
+                            src="../images/digital/bear.glb" 
+                            alt="3D Bear Model"
+                            auto-rotate
+                            camera-controls
+                            touch-action="pan-y"
+                            shadow-intensity="1"
+                            environment-image="neutral"
+                            exposure="1"
+                            auto-rotate-delay="1000"
+                            rotation-per-second="15deg"
+                            loading="eager"
+                            reveal="auto"
+                            camera-orbit="45deg 55deg 10m"
+                            field-of-view="30deg"
+                            min-camera-orbit="auto auto auto"
+                            max-camera-orbit="auto auto auto">
+                        </model-viewer>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="model-description">
+                        <h3>Fish Model</h3>
+                    </div>
+                    <div class="model-container small">
+                        <model-viewer 
+                            src="../images/digital/fish.glb" 
+                            alt="3D Fish Model"
+                            auto-rotate
+                            camera-controls
+                            touch-action="pan-y"
+                            shadow-intensity="1"
+                            environment-image="neutral"
+                            exposure="1"
+                            auto-rotate-delay="2000"
+                            rotation-per-second="20deg"
+                            loading="eager"
+                            reveal="auto"
+                            camera-orbit="30deg 55deg 15m"
+                            field-of-view="35deg"
+                            min-camera-orbit="auto auto auto"
+                            max-camera-orbit="auto auto auto">
+                        </model-viewer>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="model-description">
+                        <h3>Tree Model</h3>
+                    </div>
+                    <div class="model-container small">
+                        <model-viewer 
+                            src="../images/digital/tree.glb" 
+                            alt="3D Tree Model"
+                            auto-rotate
+                            camera-controls
+                            touch-action="pan-y"
+                            shadow-intensity="1"
+                            environment-image="neutral"
+                            exposure="1"
+                            auto-rotate-delay="1800"
+                            rotation-per-second="12deg"
+                            loading="eager"
+                            reveal="auto"
+                            camera-orbit="15deg 45deg 35m"
+                            field-of-view="40deg"
+                            min-camera-orbit="auto auto auto"
+                            max-camera-orbit="auto auto auto">
+                        </model-viewer>
+                    </div>
+                </div>
+            </div>
+            
+           
+            
+            <div class="back-button-container">
+                <a href="../digital.html" class="back-button">← Back to Digital Art</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer class="copyright-footer" style="margin-top: 60px;">
+        <p>© 2025 Sue An Park. All rights reserved.</p>
+    </footer>
+
+</body>
+</html> 
