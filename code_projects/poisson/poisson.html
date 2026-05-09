@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poisson image blending</title>
+    <link rel="stylesheet" href="https://use.typekit.net/krl4ixy.css">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="poisson.css">
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="../../index.html">Sue An Park</a></div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="../../categories.html" class="dropdown-toggle">Categories</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../../2d.html">2D Art</a></li>
+                    <li><a href="../../3d.html">3D Art</a></li>
+                    <li><a href="../../digital.html">Digital Art</a></li>
+                    <li><a href="../../coding.html" class="active">Coding</a></li>
+                    <li><a href="../../photography.html">Photography</a></li>
+                </ul>
+            </li>
+            <li><a href="../../about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="project-detail-page">
+        <div class="project-header">
+            <h1>Poisson Image Blending</h1>
+            <div class="project-header-meta">
+                <p class="project-subtitle">Seamless blending by matching source gradients to the target background.</p>
+                <p class="project-header-date">October 2025</p>
+            </div>
+        </div>
+
+        <div class="project-content">
+            <div class="project-info-section">
+                <div class="project-description">
+                    <h2>About</h2>
+                    <p>Pasting a source region over a target with a hard mask leaves obvious seams when lighting or color do not match. <strong>Poisson blending</strong> (Pérez et al.) reframes compositing in the <strong>gradient domain</strong>: the goal is an image whose gradients inside the mask follow the source (or a guided variant) while pixels on the boundary agree with the target. That coupling leads to a large, sparse linear system—discretizing the Laplacian yields the familiar Poisson equation.</p>
+                    <p>The same toolkit often sits alongside <strong>Laplacian pyramid</strong> blending: pyramids mix frequency bands for smooth transitions, while Poisson editing enforces local gradient consistency for difficult illumination mismatches.</p>
+
+                    <h3>Pipeline</h3>
+                    <ol>
+                        <li><strong>Inputs:</strong> Source image, target (background), binary mask, and placement offsets so the source aligns with the target.</li>
+                        <li><strong>Guidance field:</strong> Choose vector field inside the mask (typically source gradients, or mixed / feathered variants).</li>
+                        <li><strong>Discrete Laplacian:</strong> For each unknown pixel in the mask, relate its value to neighbors via a 4-connected stencil; boundary neighbors contribute known target values as constants.</li>
+                        <li><strong>Solve:</strong> Assemble the system with sparse matrices and solve per color channel for the fused intensities.</li>
+                        <li><strong>Compare:</strong> Baselines such as alpha blending and multi-scale pyramid blends highlight when gradient-domain fusion hides seams best.</li>
+                    </ol>
+
+                    <h3>Tech stack</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">SciPy</span>
+                    </div>
+                </div>
+
+                <div class="project-links-section">
+                    <div class="project-sidebar-image">
+                        <img src="../../images/website/poisson.png" alt="Poisson blending composite">
+                    </div>
+                </div>
+            </div>
+
+            <section class="results-section" aria-labelledby="results-heading">
+                <h2 id="results-heading">Results</h2>
+                <p class="section-lead">Simple alpha blend, Laplacian pyramid blend, and Poisson blend results (left to right)</p>
+                <div class="results-stack">
+                    <figure class="result-card">
+                        <img src="results/res_img01.jpg" alt="Poisson blend result 1" loading="lazy">
+                    </figure>
+                    <figure class="result-card">
+                        <img src="results/res_img03.jpg" alt="Poisson blend result 3" loading="lazy">
+                    </figure>
+                    <figure class="result-card">
+                        <img src="results/res_img04.jpg" alt="Poisson blend result 4" loading="lazy">
+                    </figure>
+                    <figure class="result-card">
+                        <img src="results/res_img05.jpg" alt="Poisson blend result 5" loading="lazy">
+                    </figure>
+                    <figure class="result-card">
+                        <img src="results/res_img07.jpg" alt="Poisson blend result 7" loading="lazy">
+                    </figure>
+                </div>
+            </section>
+        </div>
+
+        <div class="navigation-section">
+            <a href="../../coding.html" class="back-btn">← Back to Coding Projects</a>
+        </div>
+    </div>
+
+    <footer class="copyright-footer" style="margin-top: 160px;">
+        <p>© 2025 Sue An Park. All rights reserved.</p>
+    </footer>
+</body>
+</html>

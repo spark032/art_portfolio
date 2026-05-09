@@ -1,23 +1,23 @@
-/* BearTracks Project Page Styles */
+/* Poisson image blending project page */
 
 .project-detail-page {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 120px 20px 60px;
+    padding: 120px 20px 100px;
 }
 
 .project-header {
     text-align: center;
     margin-bottom: 100px;
     position: relative;
+    padding-bottom: 5px;
 }
 
 .project-header::after {
     content: '';
     position: absolute;
-    bottom: -50px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: 1px;
     background-color: rgba(51, 51, 51, 0.5);
@@ -37,6 +37,34 @@
     font-size: 1.2rem;
     color: #666;
     font-weight: 300;
+    margin: 0;
+}
+
+.project-header-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 2px;
+}
+
+.project-header-meta .project-subtitle {
+    text-align: center;
+}
+
+.project-header-date {
+    align-self: flex-end;
+    text-align: right;
+    font-family: 'Stevie Sans', sans-serif;
+    font-size: 1.08rem;
+    font-weight: 400;
+    color: #666;
+    letter-spacing: 0.03em;
+    margin: 0;
+    white-space: nowrap;
 }
 
 .project-sidebar-image {
@@ -59,7 +87,8 @@
     margin-bottom: 60px;
 }
 
-.project-description h2, .project-description h3 {
+.project-description h2,
+.project-description h3 {
     font-family: 'Stevie Sans', sans-serif;
     color: #333;
     margin-bottom: 20px;
@@ -76,7 +105,8 @@
     margin-top: 30px;
 }
 
-.project-description p, .project-description li {
+.project-description p,
+.project-description li {
     font-family: 'Stevie Sans', sans-serif;
     color: #666;
     line-height: 1.6;
@@ -91,6 +121,14 @@
     font-family: 'Stevie Sans', sans-serif;
     font-weight: 530;
     color: #333;
+}
+
+.project-description code {
+    font-family: ui-monospace, monospace;
+    font-size: 0.9em;
+    background: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 4px;
 }
 
 .tech-stack {
@@ -110,58 +148,55 @@
     font-weight: 400;
 }
 
-.project-links-section h3 {
-    font-family: 'Stevie Sans', sans-serif;
-    color: #333;
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-bottom: 20px;
+.results-section {
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(51, 51, 51, 0.25);
 }
 
-.project-buttons {
+.results-section h2 {
+    font-family: 'Stevie Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.results-section .section-lead {
+    text-align: center;
+    font-family: 'Stevie Sans', sans-serif;
+    color: #666;
+    margin-bottom: 28px;
+}
+
+.results-stack {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 32px;
+    width: 100%;
+    margin-bottom: 36px;
 }
 
-.project-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 15px 25px;
-    text-decoration: none;
-    border-radius: 8px;
-    font-family: 'Stevie Sans', sans-serif;
-    font-weight: 400;
-    transition: all 0.3s ease;
-    justify-content: center;
+.result-card {
+    margin: 0;
+    background: #fafafa;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
-.project-btn.primary {
-    background: #333;
-    color: white;
-}
-
-.project-btn.primary:hover {
-    background: #555;
-    transform: translateY(-2px);
-}
-
-.project-btn.secondary {
-    background: transparent;
-    color: #333;
-    border: 2px solid #333;
-}
-
-.project-btn.secondary:hover {
-    background: #333;
-    color: white;
-    transform: translateY(-2px);
+.result-card img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .navigation-section {
     text-align: center;
     padding-top: 40px;
+    padding-bottom: 64px;
+    margin-top: 28px;
     border-top: 1px solid rgba(51, 51, 51, 0.5);
 }
 
@@ -181,10 +216,15 @@
     transform: translateY(-2px);
 }
 
-/* Mobile Responsive Styles */
 @media (max-width: 768px) {
     .project-header h1 {
         font-size: 2.5rem;
+    }
+
+    .project-header-date {
+        align-self: center;
+        text-align: center;
+        white-space: normal;
     }
 
     .project-info-section {
@@ -192,11 +232,7 @@
         gap: 40px;
     }
 
-    .project-buttons {
-        flex-direction: column;
-    }
-
     .tech-stack {
         justify-content: center;
     }
-} 
+}

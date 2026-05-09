@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tone Mapping · HDR</title>
+    <link rel="stylesheet" href="https://use.typekit.net/krl4ixy.css">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="tone_mapping.css">
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="../../index.html">Sue An Park</a></div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="../../categories.html" class="dropdown-toggle">Categories</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../../2d.html">2D Art</a></li>
+                    <li><a href="../../3d.html">3D Art</a></li>
+                    <li><a href="../../digital.html">Digital Art</a></li>
+                    <li><a href="../../coding.html" class="active">Coding</a></li>
+                    <li><a href="../../photography.html">Photography</a></li>
+                </ul>
+            </li>
+            <li><a href="../../about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="project-detail-page">
+        <div class="project-header">
+            <h1>Tone Mapping</h1>
+            <div class="project-header-meta">
+                <p class="project-subtitle">HDR from exposure brackets, tone-mapped for ordinary screens</p>
+                <p class="project-header-date">October 2025</p>
+            </div>
+        </div>
+
+        <div class="project-content">
+            <div class="project-info-section">
+                <div class="project-description">
+                    <h2>About</h2>
+                    <p>Standard cameras cannot capture the full dynamic range of many real-world scenes, so a single exposure is often too dark or too bright in different regions. This project builds a pipeline that fuses a <strong>stack of exposures</strong> of the same scene into one <strong>HDR radiance map</strong>, then applies <strong>tone mapping</strong> so the result can be displayed on a low-dynamic-range monitor.</p>
+                    <p>Radiance recovery follows Debevec and Malik (1997); tone mapping includes Durand (2002)-style local processing alongside simpler global operators for comparison.</p>
+
+                    <h3>Pipeline</h3>
+                    <ol>
+                        <li><strong>Read exposures:</strong> Parse shutter times and image paths from a stack on disk.</li>
+                        <li><strong>Sampling:</strong> Build a sample matrix of pixel values across exposures for robust fitting.</li>
+                        <li><strong>Recover response <em>g</em>:</strong> Per color channel, solve for the camera response / radiance relationship with a tent weight over intensities and a λ-smoothed second derivative (Debevec–Malik).</li>
+                        <li><strong>HDR radiance map:</strong> Combine exposures using recovered <em>g</em> and known log exposure times.</li>
+                        <li><strong>Visualization:</strong> Plot <em>g</em> curves; visualize log radiance (e.g. mean across channels with a colormap) and clipped RGB previews.</li>
+                        <li><strong>Tone mapping:</strong> Compare global operators (e.g. global scale, global simple) with a <strong>Durand</strong>-style local operator for display-ready LDR images.</li>
+                    </ol>
+
+                    <h3>Tech stack</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">NumPy</span>
+                    </div>
+                </div>
+
+                <div class="project-links-section">
+                    <div class="project-sidebar-image">
+                        <img src="../../images/website/tone_mapping.png" alt="Tone mapping project">
+                    </div>
+                </div>
+            </div>
+
+            <section class="results-section" aria-labelledby="results-heading">
+                <h2 id="results-heading">Results</h2>
+                <p class="section-lead">Radiance visualization and tone-mapped outputs from several exposure stacks.</p>
+                <div class="results-stack">
+                    <figure class="result-card">
+                        <img src="outputs/chapel_results.png" alt="Chapel scene tone mapped" loading="lazy">
+                    </figure>
+                    <figure class="result-card">
+                        <img src="outputs/bonsai_results.png" alt="Bonsai scene tone mapped" loading="lazy">
+                    </figure>
+                    <figure class="result-card">
+                        <img src="outputs/mug_results.png" alt="Mug scene tone mapped" loading="lazy">
+                    </figure>
+                    <figure class="result-card">
+                        <img src="outputs/house_results.png" alt="House scene tone mapped" loading="lazy">
+                    </figure>
+                    <figure class="result-card">
+                        <img src="outputs/window_results.png" alt="Window scene tone mapped" loading="lazy">
+                    </figure>
+                </div>
+            </section>
+        </div>
+
+        <div class="navigation-section">
+            <a href="../../coding.html" class="back-btn">← Back to Coding Projects</a>
+        </div>
+    </div>
+
+    <footer class="copyright-footer" style="margin-top: 160px;">
+        <p>© 2025 Sue An Park. All rights reserved.</p>
+    </footer>
+</body>
+</html>

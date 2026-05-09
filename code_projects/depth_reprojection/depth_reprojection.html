@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depth Reprojection</title>
+    <link rel="stylesheet" href="https://use.typekit.net/krl4ixy.css">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="depth_reprojection.css">
+</head>
+<body class="depth-reprojection-page">
+    <nav>
+        <div class="logo"><a href="../../index.html">Sue An Park</a></div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="../../categories.html" class="dropdown-toggle">Categories</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../../2d.html">2D Art</a></li>
+                    <li><a href="../../3d.html">3D Art</a></li>
+                    <li><a href="../../digital.html">Digital Art</a></li>
+                    <li><a href="../../coding.html" class="active">Coding</a></li>
+                    <li><a href="../../photography.html">Photography</a></li>
+                </ul>
+            </li>
+            <li><a href="../../about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="project-detail-page">
+        <div class="project-header">
+            <h1>Depth Reprojection</h1>
+            <div class="project-header-meta">
+                <p class="project-subtitle">New views from stereo RGB and disparity using forward warping</p>
+                <p class="project-header-date">January 2026</p>
+            </div>
+        </div>
+
+        <div class="project-content">
+            <div class="project-info-section">
+                <div class="project-description">
+                    <h2>About</h2>
+                    <p>This project synthesizes images from a novel viewpoint using depth maps paired with RGB images from a rectified stereo rig. Ground-truth disparities from the <a href="https://vision.middlebury.edu/stereo/data/scenes2014/" target="_blank" rel="noopener noreferrer">Middlebury stereo dataset</a> drive depth estimation and reprojection. Each scene includes calibration (<code>calib.txt</code>), left and right images (<code>im0.png</code>, <code>im1.png</code>), and disparity maps (<code>disp0.pfm</code>, <code>disp1.pfm</code>).</p>
+
+                    <h3>How to run</h3>
+                    <p><code>python main.py -d &lt;relative path to dataset&gt; -x &lt;x-shift&gt; -v &lt;video generation&gt;</code></p>
+
+                    <h3>Pipeline</h3>
+                    <ol>
+                        <li><strong>Depth from disparity.</strong> Depth is computed as <em>z = (b · f) / (d + d<sub>offs</sub>)</em>, where <em>b</em> is the baseline, <em>f</em> the focal length, and <em>d</em> the disparity.</li>
+                        <li><strong>Forward warp with 2×2 bilinear splatting.</strong> For each source pixel, target coordinates are <em>x′ = x − d · (x<sub>pos</sub> − s)</em>, <em>y′ = y</em>, with <em>s</em> in {0, 1} for left/right. Each sample is splatted into a 2×2 neighborhood around the floored (<em>x′</em>, <em>y′</em>) with bilinear weights over the four cells, which reduces aliasing and hole patterns compared to point splatting.</li>
+                        <li><strong>Occlusion (z-buffer).</strong> A z-buffer keeps the closest depth per pixel. Similar depths blend; a closer surface resets accumulation for that pixel.</li>
+                        <li><strong>Hole filling.</strong> For each row, the leftmost and rightmost valid pixels extend to the edges, with linear interpolation between valid samples.</li>
+                        <li><strong>Post-processing.</strong> A 7×7 median blur reduces noise.</li>
+                    </ol>
+
+                    <h3>Limitations</h3>
+                    <p>Horizontal streaks remain in both interpolated and extrapolated frames. A richer occlusion model than the z-buffer alone could help. Hole-fill color choice also affects quality. Extrapolation beyond the two input views lacks real scene content, so errors increase. Uniform regions (for example walls) can show diagonal streaks; 2×2 splatting reduces but does not remove them—especially visible in the playroom results.</p>
+
+                    <h3>Tech stack</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </div>
+
+                <div class="project-links-section">
+                    <div class="project-sidebar-image">
+                        <img src="../../images/website/depth_reprojection.png" alt="Depth reprojection sample">
+                    </div>
+                    <h3>Project links</h3>
+                    <div class="project-buttons">
+                        <a href="https://github.com/spark032/depth_reprojection" class="project-btn primary" target="_blank" rel="noopener noreferrer">
+                            <span>📁</span> GitHub repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <section class="media-section" aria-labelledby="samples-heading">
+                <h2 id="samples-heading">Sample outputs</h2>
+                <p class="section-lead">Left frame, Right frame, and Viewpoint Sweep Video (−0.3 to 1.3 in steps of 0.1)</p>
+
+                <div class="output-rows">
+                    <article class="output-row" aria-labelledby="out-flowers">
+                        <h3 id="out-flowers" class="output-row-title">Flowers</h3>
+                        <figure class="output-cell">
+                            <img src="outputs/flowers_left.png" alt="Flowers — left" loading="lazy" width="800" height="600">
+                        </figure>
+                        <figure class="output-cell">
+                            <img src="outputs/flowers_right.png" alt="Flowers — right" loading="lazy" width="800" height="600">
+                        </figure>
+                        <figure class="output-cell output-cell-video">
+                            <video controls playsinline webkit-playsinline preload="metadata" poster="outputs/flowers_left.png" src="outputs/flowers.mov"></video>
+                            <p class="video-fallback" hidden>If this clip does not play, try Safari or <a href="outputs/flowers.mov" download>download the .MOV</a> (Chrome often needs H.264 in .MP4).</p>
+                        </figure>
+                    </article>
+
+                    <article class="output-row" aria-labelledby="out-jadeplant">
+                        <h3 id="out-jadeplant" class="output-row-title">Jadeplant</h3>
+                        <figure class="output-cell">
+                            <img src="outputs/jadeplant_left.png" alt="Jadeplant — left" loading="lazy" width="800" height="600">
+                        </figure>
+                        <figure class="output-cell">
+                            <img src="outputs/jadeplant_right.png" alt="Jadeplant — right" loading="lazy" width="800" height="600">
+                        </figure>
+                        <figure class="output-cell output-cell-video">
+                            <video controls playsinline webkit-playsinline preload="metadata" poster="outputs/jadeplant_left.png" src="outputs/jadeplant.mov"></video>
+                            <p class="video-fallback" hidden>If this clip does not play, try Safari or <a href="outputs/jadeplant.mov" download>download the .MOV</a> (Chrome often needs H.264 in .MP4).</p>
+                        </figure>
+                    </article>
+
+                    <article class="output-row" aria-labelledby="out-playroom">
+                        <h3 id="out-playroom" class="output-row-title">Playroom</h3>
+                        <figure class="output-cell">
+                            <img src="outputs/playroom_left.png" alt="Playroom — left" loading="lazy" width="800" height="600">
+                        </figure>
+                        <figure class="output-cell">
+                            <img src="outputs/playroom_right.png" alt="Playroom — right" loading="lazy" width="800" height="600">
+                        </figure>
+                        <figure class="output-cell output-cell-video">
+                            <video controls playsinline webkit-playsinline preload="metadata" poster="outputs/playroom_left.png" src="outputs/playroom.mov"></video>
+                            <p class="video-fallback" hidden>If this clip does not play, try Safari or <a href="outputs/playroom.mov" download>download the .MOV</a> (Chrome often needs H.264 in .MP4).</p>
+                        </figure>
+                    </article>
+
+                    <article class="output-row" aria-labelledby="out-sword">
+                        <h3 id="out-sword" class="output-row-title">Sword</h3>
+                        <figure class="output-cell">
+                            <img src="outputs/sword_left.png" alt="Sword — left" loading="lazy" width="800" height="600">
+                        </figure>
+                        <figure class="output-cell">
+                            <img src="outputs/sword_right.png" alt="Sword — right" loading="lazy" width="800" height="600">
+                        </figure>
+                        <figure class="output-cell output-cell-video">
+                            <video controls playsinline webkit-playsinline preload="metadata" poster="outputs/sword_left.png" src="outputs/sword.mov"></video>
+                            <p class="video-fallback" hidden>If this clip does not play, try Safari or <a href="outputs/sword.mov" download>download the .MOV</a> (Chrome often needs H.264 in .MP4).</p>
+                        </figure>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <div class="navigation-section">
+            <a href="../../coding.html" class="back-btn">← Back to Coding Projects</a>
+        </div>
+    </div>
+
+    <footer class="copyright-footer" style="margin-top: 60px;">
+        <p>© 2025 Sue An Park. All rights reserved.</p>
+    </footer>
+    <script>
+(function () {
+    document.querySelectorAll('.output-cell-video video').forEach(function (video) {
+        var cell = video.closest('.output-cell-video');
+        var fallback = cell && cell.querySelector('.video-fallback');
+        function showFallback() {
+            if (fallback) fallback.hidden = false;
+        }
+        video.addEventListener('error', showFallback);
+    });
+})();
+    </script>
+</body>
+</html>
