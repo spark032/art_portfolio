@@ -6,8 +6,9 @@
     <title>Categories</title>
     <link rel="stylesheet" href="https://use.typekit.net/krl4ixy.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="categories-carousel.css">
 </head>
-<body>
+<body class="categories-page">
     <nav>
         <div class="logo"><a href="index.html">Sue An Park</a></div>
         <ul class="nav-links">
@@ -15,10 +16,10 @@
             <li class="dropdown">
                 <a href="categories.html" class="dropdown-toggle active">Categories</a>
                 <ul class="dropdown-menu">
+                    <li><a href="coding.html">Coding</a></li>
                     <li><a href="2d.html">2D Art</a></li>
                     <li><a href="3d.html">3D Art</a></li>
                     <li><a href="digital.html">Digital Art</a></li>
-                    <li><a href="coding.html">Coding</a></li>
                     <li><a href="photography.html">Photography</a></li>
                 </ul>
             </li>
@@ -28,6 +29,48 @@
     <div class="gallery-page">
         <h1>All Categories</h1>
         <div class="gallery-grid">
+            <div class="gallery-section" id="coding">
+                <h2>Coding</h2>
+                <div class="all-photo-grid">
+                    <div class="all-photo-item" data-title="Happy Dancing Trees">
+                        <a href="code_projects/happy_dancing_trees/happy_dancing_trees.html">
+                            <video autoplay muted loop playsinline preload="metadata" aria-label="Happy Dancing Trees animated result">
+                                <source src="images/website/happy_dancing_trees.mp4" type="video/mp4">
+                            </video>
+                        </a>
+                    </div>
+                    <div class="all-photo-item" data-title="Animal Crossing Rendering">
+                        <a href="code_projects/animal_crossing/animal_crossing.html">
+                            <img src="images/website/animal_crossing.png" alt="Animal Crossing Rendering">
+                        </a>
+                    </div>
+                    <div class="all-photo-item" data-title="Depth Reprojection">
+                        <a href="code_projects/depth_reprojection/depth_reprojection.html">
+                            <img src="images/website/depth_reprojection.png" alt="Depth Reprojection">
+                        </a>
+                    </div>
+                    <div class="all-photo-item" data-title="Poisson blending">
+                        <a href="code_projects/poisson/poisson.html">
+                            <img src="images/website/poisson.png" alt="Poisson image blending">
+                        </a>
+                    </div>
+                    <div class="all-photo-item" data-title="Tone mapping">
+                        <a href="code_projects/tone_mapping/tone_mapping.html">
+                            <img src="images/website/tone_mapping.png" alt="Tone mapping">
+                        </a>
+                    </div>
+                    <div class="all-photo-item" data-title="Just Vision">
+                        <a href="code_projects/justvision/justvision.html">
+                            <img src="images/website/justvision.png" alt="Just Vision">
+                        </a>
+                    </div>
+                    <div class="all-photo-item" data-title="Bear Tracks">
+                        <a href="code_projects/beartracks/beartracks.html">
+                            <img src="images/website/beartracks.png" alt="Bear Tracks">
+                        </a>
+                    </div>
+                </div>
+            </div>
             <div class="gallery-section" id="2d">
                 <h2>2D Art</h2>
                 <div class="all-photo-grid">
@@ -133,48 +176,6 @@
                     </div>
                 </div>
             </div>
-            <div class="gallery-section" id="coding">
-                <h2>Coding</h2>
-                <div class="all-photo-grid">
-                    <div class="all-photo-item" data-title="Happy Dancing Trees">
-                        <a href="code_projects/happy_dancing_trees/happy_dancing_trees.html">
-                            <video autoplay muted loop playsinline preload="metadata" aria-label="Happy Dancing Trees animated result">
-                                <source src="images/website/happy_dancing_trees.mp4" type="video/mp4">
-                            </video>
-                        </a>
-                    </div>
-                    <div class="all-photo-item" data-title="Animal Crossing Rendering">
-                        <a href="code_projects/animal_crossing/animal_crossing.html">
-                            <img src="images/website/animal_crossing.png" alt="Animal Crossing Rendering">
-                        </a>
-                    </div>
-                    <div class="all-photo-item" data-title="Depth Reprojection">
-                        <a href="code_projects/depth_reprojection/depth_reprojection.html">
-                            <img src="images/website/depth_reprojection.png" alt="Depth Reprojection">
-                        </a>
-                    </div>
-                    <div class="all-photo-item" data-title="Poisson blending">
-                        <a href="code_projects/poisson/poisson.html">
-                            <img src="images/website/poisson.png" alt="Poisson image blending">
-                        </a>
-                    </div>
-                    <div class="all-photo-item" data-title="Tone mapping">
-                        <a href="code_projects/tone_mapping/tone_mapping.html">
-                            <img src="images/website/tone_mapping.png" alt="Tone mapping">
-                        </a>
-                    </div>
-                    <div class="all-photo-item" data-title="Just Vision">
-                        <a href="code_projects/justvision/justvision.html">
-                            <img src="images/website/justvision.png" alt="Just Vision">
-                        </a>
-                    </div>
-                    <div class="all-photo-item" data-title="Bear Tracks">
-                        <a href="code_projects/beartracks/beartracks.html">
-                            <img src="images/website/beartracks.png" alt="Bear Tracks">
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -182,5 +183,6 @@
     <footer class="copyright-footer">
         <p>© 2025 Sue An Park. All rights reserved.</p>
     </footer>
+    <script src="categories-carousel.js"></script>
 </body>
 </html>

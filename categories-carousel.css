@@ -1,0 +1,124 @@
+/* Three-project carousels used only on the All Categories page. */
+
+.categories-page .category-carousel {
+    position: relative;
+}
+
+.categories-page .category-carousel-track {
+    display: grid;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - 30px) / 3);
+    gap: 15px;
+    overflow-x: hidden;
+    margin-bottom: 40px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.categories-page .category-carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.categories-page .category-carousel-track .all-photo-item {
+    width: 100%;
+    scroll-snap-align: start;
+}
+
+.categories-page .category-carousel-spacer {
+    height: 300px;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.categories-page .category-carousel-arrow {
+    position: absolute;
+    top: 150px;
+    z-index: 3;
+    display: flex;
+    width: 36px;
+    height: 36px;
+    padding: 0 0 3px;
+    border: 0;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.94);
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.24);
+    transform: translateY(-50%);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.categories-page .category-carousel-previous {
+    left: -18px;
+}
+
+.categories-page .category-carousel-next {
+    right: -18px;
+}
+
+.categories-page .category-carousel-arrow:hover:not(:disabled),
+.categories-page .category-carousel-arrow:focus-visible:not(:disabled) {
+    transform: translateY(-50%) scale(1.08);
+}
+
+.categories-page .category-carousel-arrow:disabled {
+    opacity: 0.32;
+    cursor: default;
+}
+
+@media (max-width: 768px) {
+    .categories-page .gallery-grid {
+        padding: 0;
+    }
+
+    .categories-page .category-carousel-track {
+        grid-auto-columns: calc((100% - 20px) / 3);
+        gap: 10px;
+    }
+
+    .categories-page .category-carousel-track .all-photo-item,
+    .categories-page .category-carousel-spacer {
+        height: 210px;
+    }
+
+    .categories-page .category-carousel-arrow {
+        top: 105px;
+        width: 32px;
+        height: 32px;
+        font-size: 1.55rem;
+    }
+
+    .categories-page .category-carousel-previous {
+        left: -12px;
+    }
+
+    .categories-page .category-carousel-next {
+        right: -12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .categories-page .gallery-page {
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+
+    .categories-page .category-carousel-track .all-photo-item,
+    .categories-page .category-carousel-spacer {
+        height: 150px;
+    }
+
+    .categories-page .category-carousel-arrow {
+        top: 75px;
+        width: 28px;
+        height: 28px;
+        font-size: 1.35rem;
+    }
+}
