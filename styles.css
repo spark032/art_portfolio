@@ -781,6 +781,14 @@ html {
     transition: brightness 0.3s ease;
 }
 
+.all-photo-item video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
 .all-photo-item:hover img {
     brightness: 0.7;
 }

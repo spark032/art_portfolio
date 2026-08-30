@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Crossing Rendering</title>
+    <link rel="stylesheet" href="https://use.typekit.net/krl4ixy.css">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../justvision/justvision.css">
+    <link rel="stylesheet" href="../project-page.css">
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="../../index.html">Sue An Park</a></div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="../../categories.html" class="dropdown-toggle">Categories</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../../2d.html">2D Art</a></li>
+                    <li><a href="../../3d.html">3D Art</a></li>
+                    <li><a href="../../digital.html">Digital Art</a></li>
+                    <li><a href="../../coding.html" class="active">Coding</a></li>
+                    <li><a href="../../photography.html">Photography</a></li>
+                </ul>
+            </li>
+            <li><a href="../../about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="project-detail-page">
+        <div class="project-header">
+            <h1>Animal Crossing Rendering</h1>
+            <div class="project-header-meta">
+                <p class="project-subtitle">A real-time rendering of a stylized Animal Crossing scene</p>
+            </div>
+        </div>
+
+        <div class="project-content">
+            <div class="project-info-section">
+                <div class="project-description">
+                    <h2>About</h2>
+                    <p>Animal Crossing Rendering is a four-person computer graphics project that recreates the warm, playful look of an Animal Crossing environment in a custom rendering pipeline. The scene combines imported and hand-modeled assets with stylized shading, surface detail, animation, lighting, and post-processing.</p>
+
+                    <h3>Rendering System</h3>
+                    <p>The completed renderer brings together a broad range of real-time graphics techniques, including instanced rendering, particle systems, camera paths, depth buffering, depth of field, shadow mapping, real-time soft shadows, color grading, scrolling textures, and a post-processing pipeline.</p>
+
+                    <h3>My Contributions</h3>
+                    <ul>
+                        <li><strong>Stylized filters:</strong> Developed post-processing effects that help unify the scene's distinctive illustrated appearance.</li>
+                        <li><strong>Bump and texture mapping:</strong> Added surface detail and material variation without increasing mesh complexity.</li>
+                        <li><strong>OBJ loader:</strong> Implemented support for loading external OBJ meshes into the renderer.</li>
+                        <li><strong>Modeling:</strong> Created and prepared 3D assets used to compose the final environment.</li>
+                    </ul>
+
+                    <h3>Tech Stack</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">OpenGL</span>
+                        <span class="tech-tag">GLSL</span>
+                        <span class="tech-tag">CMake</span>
+                        <span class="tech-tag">Real-Time Rendering</span>
+                    </div>
+                </div>
+
+                <div class="project-links-section">
+                    <div class="project-sidebar-image">
+                        <img src="../../images/website/animal_crossing.png" alt="Animal Crossing rendered scene">
+                    </div>
+                    <h3>Project Links</h3>
+                    <div class="project-buttons">
+                        <a href="https://github.com/seyoung31/animal-crossing-rendering" class="project-btn primary" target="_blank" rel="noopener noreferrer">
+                            <span>📁</span> GitHub Repository
+                        </a>
+                        <a href="../../images/website/animal_crossing_video_presentation.mp4" class="project-btn secondary" target="_blank" rel="noopener noreferrer">
+                            <span>🎬</span> Video Presentation
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <section class="scene-preview" aria-labelledby="scene-preview-heading">
+                <h2 id="scene-preview-heading">Scene Preview</h2>
+                <div class="scene-carousel">
+                    <div class="scene-carousel-track" tabindex="0" aria-label="Animal Crossing scene gallery">
+                        <figure class="scene-preview-card">
+                            <img src="../../images/website/scene_1.png" alt="Animal Crossing rendered scene preview 1">
+                        </figure>
+                        <figure class="scene-preview-card">
+                            <img src="../../images/website/scene_2.png" alt="Animal Crossing rendered scene preview 2">
+                        </figure>
+                        <figure class="scene-preview-card">
+                            <img src="../../images/website/scene_3.png" alt="Animal Crossing rendered scene preview 3">
+                        </figure>
+                    </div>
+                    <button class="scene-carousel-arrow scene-carousel-previous" type="button" aria-label="Show previous scene">‹</button>
+                    <button class="scene-carousel-arrow scene-carousel-next" type="button" aria-label="Show next scene">›</button>
+                    <div class="scene-carousel-dots" aria-label="Choose a scene">
+                        <button class="scene-carousel-dot active" type="button" aria-label="Show first scene" aria-current="true"></button>
+                        <button class="scene-carousel-dot" type="button" aria-label="Show second scene" aria-current="false"></button>
+                        <button class="scene-carousel-dot" type="button" aria-label="Show third scene" aria-current="false"></button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="navigation-section">
+            <a href="../../coding.html" class="back-btn">← Back to Coding Projects</a>
+        </div>
+    </div>
+
+    <footer class="copyright-footer" style="margin-top: 60px;">
+        <p>© 2025 Sue An Park. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const sceneTrack = document.querySelector('.scene-carousel-track');
+        const sceneDots = [...document.querySelectorAll('.scene-carousel-dot')];
+        const previousSceneButton = document.querySelector('.scene-carousel-previous');
+        const nextSceneButton = document.querySelector('.scene-carousel-next');
+
+        const setActiveScene = (index) => {
+            sceneDots.forEach((dot, dotIndex) => {
+                const isActive = dotIndex === index;
+                dot.classList.toggle('active', isActive);
+                dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+            });
+        };
+
+        let carouselAnimationFrame;
+        const scrollToScene = (index) => {
+            const start = sceneTrack.scrollLeft;
+            const destination = sceneTrack.clientWidth * index;
+            const distance = destination - start;
+            const duration = 800;
+
+            cancelAnimationFrame(carouselAnimationFrame);
+            sceneTrack.style.scrollSnapType = 'none';
+
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                sceneTrack.scrollLeft = destination;
+                sceneTrack.style.removeProperty('scroll-snap-type');
+                return;
+            }
+
+            const startTime = performance.now();
+            const animateCarousel = (currentTime) => {
+                const progress = Math.min((currentTime - startTime) / duration, 1);
+                const easedProgress = 1 - Math.pow(1 - progress, 3);
+                sceneTrack.scrollLeft = start + distance * easedProgress;
+
+                if (progress < 1) {
+                    carouselAnimationFrame = requestAnimationFrame(animateCarousel);
+                } else {
+                    sceneTrack.scrollLeft = destination;
+                    sceneTrack.style.removeProperty('scroll-snap-type');
+                }
+            };
+
+            carouselAnimationFrame = requestAnimationFrame(animateCarousel);
+        };
+
+        sceneDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => scrollToScene(index));
+        });
+
+        previousSceneButton.addEventListener('click', () => {
+            const currentIndex = Math.round(sceneTrack.scrollLeft / sceneTrack.clientWidth);
+            scrollToScene((currentIndex - 1 + sceneDots.length) % sceneDots.length);
+        });
+
+        nextSceneButton.addEventListener('click', () => {
+            const currentIndex = Math.round(sceneTrack.scrollLeft / sceneTrack.clientWidth);
+            scrollToScene((currentIndex + 1) % sceneDots.length);
+        });
+
+        let sceneScrollFrame;
+        sceneTrack.addEventListener('scroll', () => {
+            cancelAnimationFrame(sceneScrollFrame);
+            sceneScrollFrame = requestAnimationFrame(() => {
+                const index = Math.round(sceneTrack.scrollLeft / sceneTrack.clientWidth);
+                setActiveScene(index);
+            });
+        });
+    </script>
+</body>
+</html>

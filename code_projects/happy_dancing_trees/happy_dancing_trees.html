@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Dancing Trees</title>
+    <link rel="stylesheet" href="https://use.typekit.net/krl4ixy.css">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../justvision/justvision.css">
+    <link rel="stylesheet" href="../project-page.css">
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="../../index.html">Sue An Park</a></div>
+        <ul class="nav-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="../../categories.html" class="dropdown-toggle">Categories</a>
+                <ul class="dropdown-menu">
+                    <li><a href="../../2d.html">2D Art</a></li>
+                    <li><a href="../../3d.html">3D Art</a></li>
+                    <li><a href="../../digital.html">Digital Art</a></li>
+                    <li><a href="../../coding.html" class="active">Coding</a></li>
+                    <li><a href="../../photography.html">Photography</a></li>
+                </ul>
+            </li>
+            <li><a href="../../about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="project-detail-page">
+        <div class="project-header">
+            <h1>Happy Dancing Trees</h1>
+            <div class="project-header-meta">
+                <p class="project-subtitle">A recreation of Monster Mash's sketch-based 3D modeling and animation workflow</p>
+            </div>
+        </div>
+
+        <div class="project-content">
+            <div class="project-info-section">
+                <div class="project-description">
+                    <h2>About</h2>
+                    <p>Happy Dancing Trees is a four-person recreation of <em>Monster Mash: A Single-View Approach to Casual 3D Modeling and Animation</em>. The project explores a more approachable way to build animated 3D forms: users draw in two dimensions, and the system turns those strokes into an inflated, deformable mesh.</p>
+
+                    <h3>Technical Approach</h3>
+                    <p>The pipeline converts pixel strokes into vector curves while preserving their depth order, closes open boundaries, and uses constrained Delaunay triangulation to create a flat mesh. The front and back surfaces are duplicated and stitched together before inflation. A Poisson equation is solved with the drawn curves as boundary conditions to give the mesh volume, and ARAP-L deformation preserves depth relationships during animation.</p>
+
+                    <h3>My Contributions</h3>
+                    <ul>
+                        <li><strong>Attachment stitching:</strong> Fixed boundary-point and attachment stitching so connected mesh components join correctly.</li>
+                        <li><strong>Mesh inflation:</strong> Implemented the stage that transforms the stitched flat mesh into a volumetric form.</li>
+                        <li><strong>Painting tools:</strong> Implemented paintbrush and paint-bucket interactions for coloring the generated mesh.</li>
+                        <li><strong>Interface:</strong> Improved the UI to make the modeling and painting workflow clearer and easier to use.</li>
+                    </ul>
+
+                    <h3>Key Challenge</h3>
+                    <p>Constrained Delaunay triangulation could add Steiner points unpredictably, which meant corresponding vertices did not always match across host and attachment meshes. Resolving these seams required more reliable attachment handling, including processing multiple attachments separately.</p>
+
+                </div>
+
+                <div class="project-links-section">
+                    <div class="project-sidebar-image project-sidebar-video">
+                        <video controls autoplay muted loop playsinline preload="metadata" aria-label="Happy Dancing Trees animated result">
+                            <source src="../../images/website/happy_dancing_trees.mp4" type="video/mp4">
+                            Your browser does not support embedded video.
+                        </video>
+                    </div>
+                    <h3>Project Links</h3>
+                    <div class="project-buttons">
+                        <a href="https://github.com/Ahhhh2016/happy-dancing-trees" class="project-btn primary" target="_blank" rel="noopener noreferrer">
+                            <span>📁</span> GitHub Repository
+                        </a>
+                        <a href="https://dcgi.fel.cvut.cz/home/sykorad/Dvoroznak20-SA.pdf" class="project-btn secondary" target="_blank" rel="noopener noreferrer">
+                            <span>📄</span> Monster Mash Paper
+                        </a>
+                        <a href="https://docs.google.com/presentation/d/1BizmqwUWv9Kk_zlVEofPsKkD-CF_GDJCBUGP8lcntHU/edit?slide=id.g3ddcfc5bea4_3_2296#slide=id.g3ddcfc5bea4_3_2296" class="project-btn tertiary" target="_blank" rel="noopener noreferrer">
+                            <span>📊</span> Project Presentation
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="project-results" aria-labelledby="sample-results-heading">
+            <h2 id="sample-results-heading">Sample Result</h2>
+            <p>The original Simpsons-style drawing and the animated 3D result produced by our pipeline.</p>
+            <div class="project-results-grid">
+                <figure class="project-result-card">
+                    <img src="../../images/website/simpson_drawing.png" alt="Original Simpsons-style drawing used as input">
+                    <figcaption>Input drawing</figcaption>
+                </figure>
+                <figure class="project-result-card">
+                    <video controls playsinline preload="metadata" aria-label="Animated 3D result generated from the Simpsons-style drawing">
+                        <source src="../../images/website/simpson.mp4" type="video/mp4">
+                        <source src="../../images/website/simpson.mov" type="video/quicktime">
+                        Your browser does not support embedded video. <a href="../../images/website/simpson.mov">Download the sample result</a>.
+                    </video>
+                    <figcaption>Animated 3D result</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="project-techniques" aria-labelledby="techniques-heading">
+            <h2 id="techniques-heading">Techniques</h2>
+            <div class="tech-stack">
+                <span class="tech-tag">C++</span>
+                <span class="tech-tag">Mesh Processing</span>
+                <span class="tech-tag">Poisson Equation</span>
+                <span class="tech-tag">Delaunay Triangulation</span>
+                <span class="tech-tag">ARAP-L</span>
+            </div>
+        </section>
+
+        <div class="navigation-section">
+            <a href="../../coding.html" class="back-btn">← Back to Coding Projects</a>
+        </div>
+    </div>
+
+    <footer class="copyright-footer" style="margin-top: 60px;">
+        <p>© 2025 Sue An Park. All rights reserved.</p>
+    </footer>
+</body>
+</html>
